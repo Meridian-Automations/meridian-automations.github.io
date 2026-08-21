@@ -1,6 +1,23 @@
 import CortexScene from './CortexScene.jsx'
 import Reveal from './Reveal.jsx'
 import ConceptSwitcher from './ConceptSwitcher.jsx'
+import { FaAws } from 'react-icons/fa6'
+import {
+  SiAnthropic,
+  SiDatabricks,
+  SiDeepseek,
+  SiGoogle,
+  SiGooglecloud,
+  SiHuggingface,
+  SiLanggraph,
+  SiMeta,
+  SiMistralai,
+  SiMoonshotai,
+  SiPytorch,
+  SiQwen,
+  SiSnowflake,
+} from 'react-icons/si'
+import { VscAzure } from 'react-icons/vsc'
 
 const PIPELINE = [
   ['01', 'Observe the workflow', 'We sit inside the real process — every lookup, comparison and approval done by hand — and map the judgement behind each step.'],
@@ -14,44 +31,106 @@ const PROJECTS = [
   ['03', 'Relay', 'Operations copilots', 'An assistant that drafts the routine ninety percent, so specialists spend their attention on the ten that matters.'],
 ]
 
-const CAPABILITIES = [
-  [
-    '01',
-    'AI knowledge systems',
-    'Grounded systems that make company knowledge useful, traceable and available at the moment a decision is made.',
-    ['RAG', 'Enterprise search', 'Knowledge graphs', 'Document ingestion', 'Semantic search'],
-  ],
-  [
-    '02',
-    'AI agents & workflow automation',
-    'Connected agents that act on information and automate multi-step operational work.',
-    ['Agentic workflows', 'Multi-agent orchestration', 'LangGraph', 'MCP'],
-  ],
-  [
-    '03',
-    'Conversational AI & customer operations',
-    'Assistants that resolve customer and employee requests, with thoughtful escalation when a person needs to take over.',
-    ['Customer-service chatbots', 'Employee assistants', 'Voice assistants', 'Contact-centre automation'],
-  ],
-  [
-    '04',
-    'Document & language intelligence',
-    'Systems that turn documents and spoken language into accurate, usable information and finished work.',
-    ['Document generation', 'Document extraction', 'Classification', 'Translation', 'Transcription', 'Summarisation', 'Compliance checks'],
-  ],
-  [
-    '05',
-    'Model engineering & AI platforms',
-    'Production-ready model stacks, selected and adapted for the work they need to do, then measured continuously.',
-    ['Open-source deployment', 'Kimi', 'Qwen', 'DeepSeek', 'Fine-tuning', 'Model evaluation', 'AI observability'],
-  ],
-  [
-    '06',
-    'Cloud, data & machine learning',
-    'Reliable data and cloud foundations that turn operational information into machine-learning products people can trust.',
-    ['AWS', 'GCP', 'Azure', 'Data platforms', 'Data engineering', 'Data science', 'Machine learning', 'MLOps'],
-  ],
+const SOLUTIONS = [
+  ['01', 'chat', 'Conversational AI', 'Customer-service chatbots and voice assistants that answer, resolve and escalate requests around the clock.'],
+  ['02', 'search', 'Knowledge systems', 'Enterprise search and RAG that surface trusted answers from documents, systems and organisational knowledge.'],
+  ['03', 'document', 'Document intelligence', 'Document extraction, generation, translation and transcription that turn unstructured inputs into finished work.'],
+  ['04', 'workflow', 'Agent workflows', 'Connected AI agents that coordinate complex, multi-step operational work across teams and tools.'],
 ]
+
+const TECHNOLOGIES = [
+  {
+    label: 'Cloud',
+    items: [
+      ['AWS', FaAws],
+      ['Google Cloud', SiGooglecloud],
+      ['Azure', VscAzure],
+    ],
+  },
+  {
+    label: 'AI providers',
+    items: [
+      ['OpenAI', null, 'OA'],
+      ['Anthropic', SiAnthropic],
+      ['Google', SiGoogle],
+      ['Mistral AI', SiMistralai],
+    ],
+  },
+  {
+    label: 'Open models',
+    items: [
+      ['Kimi', SiMoonshotai],
+      ['Qwen', SiQwen],
+      ['DeepSeek', SiDeepseek],
+      ['Llama', SiMeta],
+    ],
+  },
+  {
+    label: 'AI & data platforms',
+    items: [
+      ['LangGraph', SiLanggraph],
+      ['Hugging Face', SiHuggingface],
+      ['Databricks', SiDatabricks],
+      ['Snowflake', SiSnowflake],
+      ['PyTorch', SiPytorch],
+      ['MCP', null, 'MCP'],
+    ],
+  },
+]
+
+function SolutionVisual({ type }) {
+  if (type === 'chat') {
+    return (
+      <div className="cortex-demo cortex-demo--chat" aria-hidden="true">
+        <div className="cortex-demo__topline"><span /> Support assistant <i /></div>
+        <div className="cortex-chat__message cortex-chat__message--user">Can I change my delivery address?</div>
+        <div className="cortex-chat__message cortex-chat__message--assistant">Yes — I found your open order. Where should we send it?</div>
+        <div className="cortex-chat__typing"><span /><span /><span /></div>
+      </div>
+    )
+  }
+
+  if (type === 'search') {
+    return (
+      <div className="cortex-demo cortex-demo--search" aria-hidden="true">
+        <div className="cortex-search__bar"><span>⌕</span> What changed in the supplier policy?</div>
+        <div className="cortex-search__result cortex-search__result--one"><i>01</i><span /><span /></div>
+        <div className="cortex-search__result cortex-search__result--two"><i>02</i><span /><span /></div>
+        <div className="cortex-search__source">3 trusted sources connected</div>
+      </div>
+    )
+  }
+
+  if (type === 'document') {
+    return (
+      <div className="cortex-demo cortex-demo--document" aria-hidden="true">
+        <div className="cortex-document__sheet">
+          <b>INVOICE</b><span /><span /><span className="is-read" /><span /><span className="is-read" />
+        </div>
+        <div className="cortex-document__data">
+          <p>Supplier <strong>Northstar Ltd</strong></p>
+          <p>Total <strong>£8,420.00</strong></p>
+          <p>Status <strong>Ready to approve</strong></p>
+        </div>
+        <i className="cortex-document__scan" />
+      </div>
+    )
+  }
+
+  return (
+    <div className="cortex-demo cortex-demo--workflow" aria-hidden="true">
+      <div className="cortex-workflow__node cortex-workflow__node--input">Intake</div>
+      <div className="cortex-workflow__node cortex-workflow__node--analyse">Analyse</div>
+      <div className="cortex-workflow__node cortex-workflow__node--act">Act</div>
+      <div className="cortex-workflow__node cortex-workflow__node--review">Review</div>
+      <span className="cortex-workflow__line cortex-workflow__line--one" />
+      <span className="cortex-workflow__line cortex-workflow__line--two" />
+      <span className="cortex-workflow__line cortex-workflow__line--three" />
+      <i className="cortex-workflow__pulse cortex-workflow__pulse--one" />
+      <i className="cortex-workflow__pulse cortex-workflow__pulse--two" />
+    </div>
+  )
+}
 
 export default function CortexPage({ onSelectConcept }) {
   return (
@@ -125,24 +204,66 @@ export default function CortexPage({ onSelectConcept }) {
         <section className="cortex-capabilities" id="capabilities">
           <div className="cortex-capabilities__intro">
             <Reveal>
-              <p className="cortex-eyebrow">Capabilities</p>
+              <p className="cortex-eyebrow">Solutions</p>
             </Reveal>
             <Reveal delay={120}>
               <h2>
-                Intelligence for the work
+                See the work
                 <br />
-                that cannot wait.
+                moving itself forward.
               </h2>
             </Reveal>
           </div>
-          <div className="cortex-capability-grid">
-            {CAPABILITIES.map(([number, title, body, services], index) => (
-              <Reveal as="article" key={number} delay={index * 90} className="cortex-capability">
-                <p className="cortex-capability__number">{number}</p>
-                <h3>{title}</h3>
-                <p className="cortex-capability__body">{body}</p>
-                <ul className="cortex-capability__services">
-                  {services.map((service) => <li key={service}>{service}</li>)}
+          <div className="cortex-solution-grid">
+            {SOLUTIONS.map(([number, type, title, body], index) => (
+              <Reveal as="article" key={number} delay={index * 90} className="cortex-solution">
+                <SolutionVisual type={type} />
+                <div className="cortex-solution__copy">
+                  <p className="cortex-solution__number">{number}</p>
+                  <h3>{title}</h3>
+                  <p>{body}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </section>
+
+        <section className="cortex-ecosystem">
+          <div className="cortex-ecosystem__intro">
+            <Reveal>
+              <p className="cortex-eyebrow">Technology ecosystem</p>
+            </Reveal>
+            <Reveal delay={120}>
+              <h2>Built on the right<br />technology for the work.</h2>
+            </Reveal>
+            <Reveal delay={220}>
+              <p>Cloud, model and data platforms selected for performance, security and fit — never because one stack is fashionable.</p>
+            </Reveal>
+          </div>
+          <div className="cortex-orbits">
+            {TECHNOLOGIES.map(({ label, items }, groupIndex) => (
+              <Reveal as="article" key={label} delay={groupIndex * 90} className="cortex-orbit">
+                <div className="cortex-orbit__stage">
+                  <div
+                    className="cortex-orbit__track"
+                    style={{ '--orbit-duration': `${20 + groupIndex * 4}s` }}
+                  >
+                    {items.map(([name, Icon, fallback], index) => (
+                      <div
+                        className="cortex-orbit__technology"
+                        key={name}
+                        style={{ '--orbit-index': index, '--orbit-total': items.length }}
+                        aria-label={name}
+                        title={name}
+                      >
+                        {Icon ? <Icon aria-hidden="true" /> : <span aria-hidden="true">{fallback}</span>}
+                      </div>
+                    ))}
+                  </div>
+                  <p>{label}</p>
+                </div>
+                <ul>
+                  {items.map(([name]) => <li key={name}>{name}</li>)}
                 </ul>
               </Reveal>
             ))}
