@@ -1996,7 +1996,7 @@ a {
 .cortex-orbit__technology > span {
   width: 1rem;
   height: 1rem;
-  color: var(--cortex-accent);
+  color: var(--technology-color);
   animation: cortex-counter-orbit var(--orbit-duration) linear infinite;
 }
 

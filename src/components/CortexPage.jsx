@@ -42,38 +42,38 @@ const TECHNOLOGIES = [
   {
     label: 'Cloud',
     items: [
-      ['AWS', FaAws],
-      ['Google Cloud', SiGooglecloud],
-      ['Azure', VscAzure],
+      ['AWS', FaAws, null, '#ff9900'],
+      ['Google Cloud', SiGooglecloud, null, '#4285f4'],
+      ['Azure', VscAzure, null, '#0078d4'],
     ],
   },
   {
     label: 'AI providers',
     items: [
-      ['OpenAI', null, 'OA'],
-      ['Anthropic', SiAnthropic],
-      ['Google', SiGoogle],
-      ['Mistral AI', SiMistralai],
+      ['OpenAI', null, 'OA', '#10a37f'],
+      ['Anthropic', SiAnthropic, null, '#d97757'],
+      ['Google', SiGoogle, null, '#4285f4'],
+      ['Mistral AI', SiMistralai, null, '#fa520f'],
     ],
   },
   {
     label: 'Open models',
     items: [
-      ['Kimi', SiMoonshotai],
-      ['Qwen', SiQwen],
-      ['DeepSeek', SiDeepseek],
-      ['Llama', SiMeta],
+      ['Kimi', SiMoonshotai, null, '#8b7cff'],
+      ['Qwen', SiQwen, null, '#615ced'],
+      ['DeepSeek', SiDeepseek, null, '#4d6bfe'],
+      ['Llama', SiMeta, null, '#0866ff'],
     ],
   },
   {
     label: 'AI & data platforms',
     items: [
-      ['LangGraph', SiLanggraph],
-      ['Hugging Face', SiHuggingface],
-      ['Databricks', SiDatabricks],
-      ['Snowflake', SiSnowflake],
-      ['PyTorch', SiPytorch],
-      ['MCP', null, 'MCP'],
+      ['LangGraph', SiLanggraph, null, '#65d2c1'],
+      ['Hugging Face', SiHuggingface, null, '#ffd21e'],
+      ['Databricks', SiDatabricks, null, '#ff3621'],
+      ['Snowflake', SiSnowflake, null, '#29b5e8'],
+      ['PyTorch', SiPytorch, null, '#ee4c2c'],
+      ['MCP', null, 'MCP', '#a78bfa'],
     ],
   },
 ]
@@ -248,11 +248,15 @@ export default function CortexPage({ onSelectConcept }) {
                     className="cortex-orbit__track"
                     style={{ '--orbit-duration': `${20 + groupIndex * 4}s` }}
                   >
-                    {items.map(([name, Icon, fallback], index) => (
+                    {items.map(([name, Icon, fallback, color], index) => (
                       <div
                         className="cortex-orbit__technology"
                         key={name}
-                        style={{ '--orbit-index': index, '--orbit-total': items.length }}
+                        style={{
+                          '--orbit-index': index,
+                          '--orbit-total': items.length,
+                          '--technology-color': color,
+                        }}
                         aria-label={name}
                         title={name}
                       >
