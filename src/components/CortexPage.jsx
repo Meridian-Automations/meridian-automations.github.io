@@ -14,6 +14,45 @@ const PROJECTS = [
   ['03', 'Relay', 'Operations copilots', 'An assistant that drafts the routine ninety percent, so specialists spend their attention on the ten that matters.'],
 ]
 
+const CAPABILITIES = [
+  [
+    '01',
+    'AI knowledge systems',
+    'Grounded systems that make company knowledge useful, traceable and available at the moment a decision is made.',
+    ['RAG', 'Enterprise search', 'Knowledge graphs', 'Document ingestion', 'Semantic search'],
+  ],
+  [
+    '02',
+    'AI agents & workflow automation',
+    'Connected agents that act on information and automate multi-step operational work.',
+    ['Agentic workflows', 'Multi-agent orchestration', 'LangGraph', 'MCP'],
+  ],
+  [
+    '03',
+    'Conversational AI & customer operations',
+    'Assistants that resolve customer and employee requests, with thoughtful escalation when a person needs to take over.',
+    ['Customer-service chatbots', 'Employee assistants', 'Voice assistants', 'Contact-centre automation'],
+  ],
+  [
+    '04',
+    'Document & language intelligence',
+    'Systems that turn documents and spoken language into accurate, usable information and finished work.',
+    ['Document generation', 'Document extraction', 'Classification', 'Translation', 'Transcription', 'Summarisation', 'Compliance checks'],
+  ],
+  [
+    '05',
+    'Model engineering & AI platforms',
+    'Production-ready model stacks, selected and adapted for the work they need to do, then measured continuously.',
+    ['Open-source deployment', 'Kimi', 'Qwen', 'DeepSeek', 'Fine-tuning', 'Model evaluation', 'AI observability'],
+  ],
+  [
+    '06',
+    'Cloud, data & machine learning',
+    'Reliable data and cloud foundations that turn operational information into machine-learning products people can trust.',
+    ['AWS', 'GCP', 'Azure', 'Data platforms', 'Data engineering', 'Data science', 'Machine learning', 'MLOps'],
+  ],
+]
+
 export default function CortexPage({ onSelectConcept }) {
   return (
     <div className="cortex-page">
@@ -47,8 +86,8 @@ export default function CortexPage({ onSelectConcept }) {
               </p>
             </Reveal>
             <Reveal delay={340}>
-              <a href="#pipeline" className="cortex-button">
-                How it works <span aria-hidden="true">↓</span>
+              <a href="#capabilities" className="cortex-button">
+                Explore capabilities <span aria-hidden="true">↓</span>
               </a>
             </Reveal>
           </div>
@@ -81,6 +120,33 @@ export default function CortexPage({ onSelectConcept }) {
               </Reveal>
             ))}
           </ol>
+        </section>
+
+        <section className="cortex-capabilities" id="capabilities">
+          <div className="cortex-capabilities__intro">
+            <Reveal>
+              <p className="cortex-eyebrow">Capabilities</p>
+            </Reveal>
+            <Reveal delay={120}>
+              <h2>
+                Intelligence for the work
+                <br />
+                that cannot wait.
+              </h2>
+            </Reveal>
+          </div>
+          <div className="cortex-capability-grid">
+            {CAPABILITIES.map(([number, title, body, services], index) => (
+              <Reveal as="article" key={number} delay={index * 90} className="cortex-capability">
+                <p className="cortex-capability__number">{number}</p>
+                <h3>{title}</h3>
+                <p className="cortex-capability__body">{body}</p>
+                <ul className="cortex-capability__services">
+                  {services.map((service) => <li key={service}>{service}</li>)}
+                </ul>
+              </Reveal>
+            ))}
+          </div>
         </section>
 
         <section className="cortex-work">

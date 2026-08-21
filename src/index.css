@@ -1513,6 +1513,7 @@ a {
 }
 
 .cortex-pipeline,
+.cortex-capabilities,
 .cortex-work,
 .cortex-statement,
 .cortex-contact {
@@ -1525,6 +1526,7 @@ a {
 }
 
 .cortex-pipeline h2,
+.cortex-capabilities h2,
 .cortex-work h2,
 .cortex-contact h2 {
   margin-top: 1.4rem;
@@ -1573,6 +1575,70 @@ a {
   color: var(--cortex-muted);
   font-size: 0.875rem;
   line-height: 1.7;
+}
+
+.cortex-capabilities__intro {
+  max-width: 58rem;
+}
+
+.cortex-capability-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  margin-top: clamp(4rem, 9vw, 8rem);
+  border-top: 1px solid var(--cortex-rule);
+  border-left: 1px solid var(--cortex-rule);
+}
+
+.cortex-capability {
+  min-height: 22rem;
+  padding: 1.4rem 2rem 2rem;
+  border-right: 1px solid var(--cortex-rule);
+  border-bottom: 1px solid var(--cortex-rule);
+}
+
+.cortex-capability__number,
+.cortex-capability__services {
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.cortex-capability__number {
+  color: var(--cortex-accent);
+}
+
+.cortex-capability h3 {
+  max-width: 18rem;
+  margin-top: 3.2rem;
+  font-size: clamp(1.25rem, 2vw, 1.65rem);
+  font-weight: 550;
+  letter-spacing: -0.03em;
+}
+
+.cortex-capability__body {
+  max-width: 28rem;
+  margin-top: 1rem;
+  color: var(--cortex-muted);
+  font-size: 0.875rem;
+  line-height: 1.7;
+}
+
+.cortex-capability__services {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem 1rem;
+  margin: 2rem 0 0;
+  padding: 0;
+  color: var(--cortex-ink);
+  list-style: none;
+}
+
+.cortex-capability__services li::before {
+  content: '·';
+  margin-right: 0.35rem;
+  color: var(--cortex-accent);
 }
 
 .cortex-projects {
@@ -1731,6 +1797,19 @@ a {
   }
 
   .cortex-step h3 {
+    margin-top: 1.75rem;
+  }
+
+  .cortex-capability-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cortex-capability {
+    min-height: 0;
+    padding: 1.4rem 1.25rem 2rem;
+  }
+
+  .cortex-capability h3 {
     margin-top: 1.75rem;
   }
 
