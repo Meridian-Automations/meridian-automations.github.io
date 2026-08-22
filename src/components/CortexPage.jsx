@@ -78,6 +78,15 @@ const TECHNOLOGIES = [
   },
 ]
 
+function getOrbitPosition(index, total) {
+  const angle = (Math.PI * 2 * index) / total - Math.PI / 2
+
+  return {
+    '--orbit-x': `${Math.cos(angle) * 5.5}rem`,
+    '--orbit-y': `${Math.sin(angle) * 5.5}rem`,
+  }
+}
+
 function SolutionVisual({ type }) {
   if (type === 'chat') {
     return (
@@ -253,8 +262,7 @@ export default function CortexPage({ onSelectConcept }) {
                         className="cortex-orbit__technology"
                         key={name}
                         style={{
-                          '--orbit-index': index,
-                          '--orbit-total': items.length,
+                          ...getOrbitPosition(index, items.length),
                           '--technology-color': color,
                         }}
                         aria-label={name}
