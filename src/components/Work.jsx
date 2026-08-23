@@ -28,7 +28,7 @@ const PROJECTS = [
   },
   {
     index: '04',
-    name: 'Meridian Bench',
+    name: 'Reimagine Bench',
     discipline: 'Digital product engineering',
     year: '2023',
     outcome:

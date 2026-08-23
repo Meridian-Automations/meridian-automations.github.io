@@ -8,7 +8,8 @@ export default function ConceptSwitcher({ variant = 'dark', onSelectConcept }) {
   return (
     <div className={`concept-switcher concept-switcher--${variant}`}>
       <button className="concept-switcher__trigger" type="button" aria-label="Choose a site concept">
-        Meridian <span aria-hidden="true">+</span>
+        <span className="concept-switcher__wordmark">Reim<strong>AGI</strong>ne Labs</span>
+        <span className="concept-switcher__toggle" aria-hidden="true">+</span>
       </button>
       <div className="concept-switcher__menu">
         <p>Choose a concept</p>

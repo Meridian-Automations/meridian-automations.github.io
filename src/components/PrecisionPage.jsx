@@ -153,7 +153,7 @@ export default function PrecisionPage({ onSelectConcept }) {
             </a>
           </Reveal>
           <footer className="precision-footer">
-            <span>Meridian / Concept 02</span>
+            <span>Reimagine Labs / Concept 02</span>
             <span>London · Remote</span>
             <button type="button" onClick={() => onSelectConcept('atlas')}>View Atlas concept</button>
           </footer>

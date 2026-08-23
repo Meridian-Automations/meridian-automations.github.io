@@ -26,7 +26,7 @@ export default function Contact() {
 
       <footer className="footer">
         <div className="footer__inner">
-          <p className="footer__item footer__wordmark">Meridian</p>
+          <p className="footer__item footer__wordmark">Reimagine Labs</p>
           <p className="footer__item">London · Remote</p>
           <a className="footer__item footer__link" href="mailto:hello@example.com">
             hello@example.com
@@ -42,7 +42,7 @@ export default function Contact() {
               X
             </a>
           </nav>
-          <p className="footer__item footer__copyright">© 2026 Meridian. Placeholder identity.</p>
+          <p className="footer__item footer__copyright">© 2026 Reimagine Labs.</p>
         </div>
       </footer>
     </section>

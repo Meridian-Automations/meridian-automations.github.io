@@ -327,7 +327,7 @@ export default function CortexPage({ onSelectConcept }) {
             </a>
           </Reveal>
           <footer className="cortex-footer">
-            <span>Meridian / Concept 03</span>
+            <span>Reimagine Labs / Concept 03</span>
             <span>London · Remote</span>
             <nav className="cortex-footer__concepts" aria-label="Other concepts">
               <button type="button" onClick={() => onSelectConcept('atlas')}>View Atlas</button>

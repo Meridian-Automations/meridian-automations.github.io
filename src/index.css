@@ -252,7 +252,16 @@ a {
   cursor: pointer;
 }
 
-.concept-switcher__trigger span {
+.concept-switcher__wordmark {
+  font: inherit;
+  font-weight: 500;
+}
+
+.concept-switcher__wordmark strong {
+  font-weight: 900;
+}
+
+.concept-switcher__trigger .concept-switcher__toggle {
   font-family: var(--font-mono);
   font-size: 0.8rem;
   font-weight: 400;
@@ -260,8 +269,8 @@ a {
   transition: transform 0.35s var(--ease-out);
 }
 
-.concept-switcher:hover .concept-switcher__trigger span,
-.concept-switcher:focus-within .concept-switcher__trigger span {
+.concept-switcher:hover .concept-switcher__trigger .concept-switcher__toggle,
+.concept-switcher:focus-within .concept-switcher__trigger .concept-switcher__toggle {
   transform: rotate(45deg);
 }
 
