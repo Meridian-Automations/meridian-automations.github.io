@@ -81,11 +81,11 @@ function makeSprite(size, [r, g, b]) {
 
 function buildNetwork(w, h) {
   const narrow = w < 720
-  const left = w * (narrow ? 0.25 : 0.53)
+  const left = w * (narrow ? 0.21 : 0.47)
   const right = w * (narrow ? 0.73 : 0.88)
   const layers = LAYERS.map((count, li) => {
     const x = left + ((right - left) * li) / (LAYERS.length - 1)
-    const span = Math.min(h * 0.72, count * (narrow ? 50 : 66))
+    const span = Math.min(h * 0.82, count * (narrow ? 58 : 78))
     const top = h / 2 - span / 2
     return Array.from({ length: count }, (_, i) => ({
       x,
@@ -104,21 +104,12 @@ function buildNetwork(w, h) {
   for (let li = 0; li < layers.length - 1; li++) {
     for (const a of layers[li]) {
       for (const b of layers[li + 1]) {
-        if (hash(a.y * 1.7 + b.y * 2.3 + li * 5.1) < 0.52) {
-          const edge = {
-            a,
-            b,
-            glow: 0,
-            rawWeight: 0.01 + hash(a.y * 4.3 + b.y * 7.1) ** 5 * 2,
-          }
-          edges.push(edge)
-          a.out.push(edge)
+        const edge = {
+          a,
+          b,
+          glow: 0,
+          rawWeight: 0.01 + hash(a.y * 4.3 + b.y * 7.1) ** 5 * 2,
         }
-      }
-      // Every node must lead somewhere, or a signal could dead-end mid-lattice.
-      if (a.out.length === 0) {
-        const b = layers[li + 1][Math.floor(hash(a.y * 9.1) * layers[li + 1].length)]
-        const edge = { a, b, glow: 0, rawWeight: 1 }
         edges.push(edge)
         a.out.push(edge)
       }
@@ -224,7 +215,7 @@ export default function CortexScene() {
       const node = inputs[Math.floor(Math.random() * inputs.length)]
       tasks.push({
         node,
-        fromX: narrow ? -32 : width * 0.44 + Math.random() * width * 0.06,
+        fromX: narrow ? -32 : width * 0.34 + Math.random() * width * 0.07,
         fromY: height * 0.16 + Math.random() * height * 0.68,
         tilt: (Math.random() - 0.5) * 0.24,
         widths: narrow
@@ -322,7 +313,7 @@ export default function CortexScene() {
         ctx.moveTo(edge.a.x, edge.a.y)
         ctx.lineTo(edge.b.x, edge.b.y)
         ctx.lineWidth = 1
-        ctx.strokeStyle = `rgba(${INK.join(',')}, ${(0.05 + breath * 0.025) * entry})`
+        ctx.strokeStyle = `rgba(${INK.join(',')}, ${(0.13 + breath * 0.035) * entry})`
         ctx.stroke()
         if (edge.glow > 0.02) {
           ctx.strokeStyle = `rgba(${ACCENT.join(',')}, ${edge.glow * 0.4 * entry})`
@@ -383,7 +374,7 @@ export default function CortexScene() {
           node.targetActivation *= Math.exp(-dt * 5)
           const pulseBreath = 0.5 + 0.5 * Math.sin(time * 0.9 + node.phase)
           const intensity = Math.max(node.activation, node.glow * 0.45)
-          const r = (1.35 + pulseBreath * 0.45 + intensity * 4.2) * entry
+          const r = (2 + pulseBreath * 0.6 + intensity * 4.6) * entry
           if (intensity > 0.025) {
             ctx.globalAlpha = Math.min(0.68, intensity * 1.2) * entry
             const gr = 8 + intensity * 16
@@ -391,7 +382,7 @@ export default function CortexScene() {
           }
           ctx.globalAlpha = Math.min(
             1,
-            0.1 + pulseBreath * 0.08 + node.activation * 1.45 + node.glow * 0.28,
+            0.22 + pulseBreath * 0.1 + node.activation * 1.45 + node.glow * 0.28,
           ) * entry
           ctx.fillStyle =
             intensity > 0.06 ? `rgb(${ACCENT.join(',')})` : `rgb(${INK.join(',')})`
